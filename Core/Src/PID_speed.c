@@ -17,6 +17,7 @@ float PID_speed(float y)
     vary_speed_speed = speed_error - last_speed_error;
     motor_speed = Kp2 * speed_error + Ki2 * speed_integral - Kd2 * vary_speed_speed;
     last_speed_error = speed_error;
+    //没什么用的补丁，但是不舍得删
     // if (motor_speed > 60)
     //     motor_speed = 60;
     // if (degree_error < 15)

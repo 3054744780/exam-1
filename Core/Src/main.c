@@ -204,6 +204,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
   if (htim->Instance == TIM2)
   {
+    //测速
     count = __HAL_TIM_GET_COUNTER(&htim3);
     if (count <= 32768)
     real_speed = 2.3 * count;
@@ -217,6 +218,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
     __HAL_TIM_SET_COUNTER(&htim3, 0);
   }
 }
+//VOFA+控制目标角度
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 {
   if (huart->Instance == USART1)
@@ -248,6 +250,7 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
     HAL_UART_Receive_IT(&huart1, &rx_byte, 1);
   }
 }
+//归零按钮
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 {
   goal_degree = 0;
