@@ -207,7 +207,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
     //测速
     count = __HAL_TIM_GET_COUNTER(&htim3);
     if (count <= 32768)
-    real_speed = 2.3 * count;
+    real_speed = 2.3 * count;//乘2.3是为了使real_speed和target_speed的量纲保持一致
     else real_speed = 2.3 * (count - 65536);
     //傻逼滤波，加上净是拖后腿:(
     //real_speed = last_real_speed * 0.8f + real_speed * 0.2f;
