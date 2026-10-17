@@ -29,11 +29,11 @@ float PID_speed(float y)
     //     motor_speed = -40;
 
     //刹车
-    if (goal_degree - 6 < ins->roll && ins->roll < goal_degree + 6 && (real_speed > 30 || real_speed < -30))
-    {
-        motor_speed = 0;
-        degree_integral = 0;
-        speed_integral = 0;
-    }
+    // if (goal_degree - 6 < ins->roll && ins->roll < goal_degree + 6 && (real_speed > 30 || real_speed < -30))
+    // {
+    //     motor_speed = 0;
+    //     degree_integral = 0;
+    //     speed_integral = 0;
+    // }
     return motor_speed;
 }

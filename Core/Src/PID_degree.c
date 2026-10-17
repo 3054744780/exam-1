@@ -7,7 +7,7 @@ float PID_degree(float z)
 {
     ins_data_t *ins = ins_data();
     degree_error = ins->roll - z;
-    if (degree_error > 5 && degree_error < -5)
+    if (degree_error > 5 || degree_error < -5)
         degree_integral = degree_integral + degree_error * 0.05;
     else degree_integral = 0;
     if (degree_integral > 100)

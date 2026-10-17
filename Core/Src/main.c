@@ -70,7 +70,7 @@ void SystemClock_Config(void);
 int count = 0;
 float goal_degree = 0;
 float speed_ref_1 = 0;
-float Kp1 = 2.5, Ki1 = 2.5, Kd1 = 0.6;
+float Kp1 = 2.1, Ki1 = 0.4, Kd1 = 0.5;
 float degree_error;
 float last_roll = 0;
 float degree_integral = 0;
@@ -84,8 +84,9 @@ float speed_integral = 0;
 float vary_speed_speed = 0;
 float last_speed_error = 0;
 float speed_ref_2 = 0;
-float Kp2 = 2, Ki2 = 1, Kd2 = 0.15;
+float Kp2 = 4.2, Ki2 = 0.7, Kd2 = 0.12;
 float last_real_speed = 0;
+float goal_degree_2 = 0;
 uint8_t rx_buf[RX_BUF_SIZE];
 uint16_t rx_index = 0;
 uint8_t rx_byte = 0;
@@ -214,7 +215,8 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
     last_real_speed = real_speed;
     // 更新 MPU6050 数据（陀螺仪 + 加速度计 + 姿态解算）
     ins_update();
-    motor(PID_speed(PID_degree(goal_degree + 17)));
+    goal_degree_2 = goal_degree + 16.5;
+    motor(PID_speed(PID_degree(goal_degree_2)));
     __HAL_TIM_SET_COUNTER(&htim3, 0);
   }
 }
