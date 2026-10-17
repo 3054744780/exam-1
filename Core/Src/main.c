@@ -209,7 +209,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
     if (count <= 32768)
     real_speed = 2.3 * count;
     else real_speed = 2.3 * (count - 65536);
-    //傻逼滤波，加上净是拖后腿
+    //傻逼滤波，加上净是拖后腿:(
     //real_speed = last_real_speed * 0.8f + real_speed * 0.2f;
     last_real_speed = real_speed;
     // 更新 MPU6050 数据（陀螺仪 + 加速度计 + 姿态解算）
